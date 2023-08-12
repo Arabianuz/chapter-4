@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Link from "next/link";
+
 const CardWrapper = styled.div`
   text-align: left;
   padding: 1%;
@@ -17,10 +19,12 @@ const Count = styled.span`
   color: darkGray;
 `;
 
-function Card({ title, views, answers }) {
+function Card({ title, views, answers, question_id }) {
   return (
     <CardWrapper>
-      <Title>{title}</Title>
+      <Link key={question_id} href={`/questions/${question_id}`} passHref>
+        <Title>{title}</Title>
+      </Link>
       <Count>{`Views: ${views} | Answers: ${answers}`}</Count>
     </CardWrapper>
   );

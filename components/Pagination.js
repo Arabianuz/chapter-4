@@ -5,7 +5,7 @@ const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
-const PaginationLink = styled.a`
+const PaginationLink = styled.span`
   padding: 2%;
   margin: 1%;
   background: ${(props) => (!props.disabled ? "orange" : "lightGrey")};
@@ -20,10 +20,10 @@ const PaginationLink = styled.a`
 function Pagination({ currentPage, hasMore }) {
   return (
     <PaginationContainer>
-      <Link href={`?page=${parseInt(currentPage) - 1}`}>
+      <Link href={`?page=${parseInt(currentPage) - 1}`} passHref>
         <PaginationLink disabled={currentPage <= 1}>Previous</PaginationLink>
       </Link>
-      <Link href={`?page=${parseInt(currentPage) + 1}`}>
+      <Link href={`?page=${parseInt(currentPage) + 1}`} passHref>
         <PaginationLink disabled={!hasMore}>Next</PaginationLink>
       </Link>
     </PaginationContainer>
